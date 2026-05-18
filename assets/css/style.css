@@ -3034,7 +3034,7 @@ input[type=radio]:checked ~ label::before {
 
 .scroll-top {
   position: fixed;
-  right: 30px;
+  left: 30px;
   bottom: 30px;
   height: 50px;
   width: 50px;
@@ -16327,7 +16327,7 @@ span.select2-selection.select2-selection--single:focus {
 .contact-media {
   background: #FFFFFF;
   border-radius: 16px;
-  padding: 55px 40px;
+      padding: 34px 35px; 
   position: relative;
   overflow: hidden;
   z-index: 2;
@@ -16414,6 +16414,7 @@ span.select2-selection.select2-selection--single:focus {
   color: var(--body-color);
   display: block;
   margin-bottom: 0;
+  display: flex;
 }
 .contact-media .box-text a,
 .contact-media a a {
@@ -16990,6 +16991,206 @@ span.select2-selection.select2-selection--single:focus {
   }
 }
 
+/*------------------- Floating Contact Icons -------------------*/
+.floating-contact-icons {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  z-index: 999;
+}
+
+.floating-icon {
+  position: relative;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  color: white;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  animation: float-up 0.6s ease-out forwards;
+  overflow: hidden;
+}
+
+.floating-icon::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  animation: ripple-expand 1.5s ease-out infinite;
+  z-index: 1;
+}
+
+.whatsapp-icon::before {
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.call-icon::before {
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.floating-icon i {
+  position: relative;
+  z-index: 10;
+}
+
+.floating-icon:hover {
+  transform: scale(1.15);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.whatsapp-icon {
+  background: linear-gradient(135deg, #25D366 0%, #20BA5A 100%);
+  animation: float-up 0.6s ease-out forwards, ripple-glow-green 1.5s ease-out infinite;
+  animation-delay: 0s;
+}
+
+.whatsapp-icon:hover {
+  background: linear-gradient(135deg, #20BA5A 0%, #1DA853 100%);
+}
+
+.call-icon {
+  background: linear-gradient(135deg, #9940f4 0%, #e9b70a 100%);
+  animation: float-up 0.6s ease-out forwards, ripple-glow-multi 1.5s ease-out infinite;
+  animation-delay: 0.1s;
+}
+
+.call-icon:hover {
+  background: linear-gradient(135deg, #EE5A6F 0%, #E74C5C 100%);
+}
+
+@keyframes float-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
+
+@keyframes glowing-wave {
+  0% {
+    transform: translate(-30%, -30%) scale(1);
+    opacity: 0.6;
+  }
+  25% {
+    transform: translate(-20%, -20%) scale(1.1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translate(-10%, -10%) scale(1.2);
+    opacity: 0.6;
+  }
+  75% {
+    transform: translate(-20%, -20%) scale(1.1);
+    opacity: 0.4;
+  }
+  100% {
+    transform: translate(-30%, -30%) scale(1);
+    opacity: 0.6;
+  }
+}
+
+@keyframes ripple-expand {
+  0% {
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    width: 300%;
+    height: 300%;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes glow-pulse-green {
+  0%, 100% {
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4), inset 0 0 20px rgba(255, 255, 255, 0.1);
+  }
+  50% {
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.8), inset 0 0 20px rgba(255, 255, 255, 0.2);
+  }
+}
+
+@keyframes glow-pulse-multi {
+  0%, 100% {
+    box-shadow: 0 4px 12px rgba(233, 183, 10, 0.4), inset 0 0 20px rgba(255, 255, 255, 0.1);
+  }
+  50% {
+    box-shadow: 0 8px 25px rgba(233, 183, 10, 0.8), inset 0 0 20px rgba(255, 255, 255, 0.2);
+  }
+}
+
+@keyframes ripple-glow-green {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.8);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
+
+@keyframes ripple-glow-multi {
+  0% {
+    box-shadow: 0 0 0 0 rgba(233, 183, 10, 0.8), 0 0 0 0 rgba(153, 64, 244, 0.6);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(233, 183, 10, 0), 0 0 0 15px rgba(153, 64, 244, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(233, 183, 10, 0), 0 0 0 0 rgba(153, 64, 244, 0);
+  }
+}
+
+/* Mobile Responsive */
+@media (max-width: 767px) {
+  .floating-contact-icons {
+    bottom: 20px;
+    right: 20px;
+    gap: 12px;
+  }
+
+  .floating-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+  }
+}
+
 .category-list {
   padding: 8px;
   border: 1px solid #747086;
@@ -16997,6 +17198,44 @@ span.select2-selection.select2-selection--single:focus {
   display: flex;
   align-items: center;
   gap: 14px;
+}
+
+.category-list .box-text {
+  display: none;
+}
+
+/* Product Expand Section */
+.product-expand-section {
+  margin-top: 25px;
+  border-bottom: 1px solid #e9ecef;
+  padding-bottom: 15px;
+}
+
+.expand-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding: 12px 0;
+  transition: all 0.3s ease;
+}
+
+.expand-header:hover {
+  color: #6b4cf7;
+}
+
+.expand-header i {
+  font-size: 14px;
+  transition: transform 0.3s ease;
+  color: #6b4cf7;
+}
+
+.expand-header[aria-expanded="true"] i {
+  transform: rotate(45deg);
+}
+}
+.category-list .box-text {
+  display: none;
 }
 .category-list.style2 {
   display: inline-block;
@@ -22977,7 +23216,7 @@ span.select2-selection.select2-selection--single:focus {
   left: var(--space);
   bottom: var(--space);
   display: flex;
-  gap: 30px;
+  gap: 24px;
   justify-content: space-between;
   text-align: left;
   padding: 40px 32px 40px 40px;
